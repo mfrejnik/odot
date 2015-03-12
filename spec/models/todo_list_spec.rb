@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe TodoList do
-  skip "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:todo_items) }
 end

@@ -26,4 +26,5 @@ end
 
 group :test do
   gem 'capybara', '~> 2.4.4'
+  gem 'shoulda-matchers', '~> 2.7.0'
 end
