@@ -1,14 +1,13 @@
 class TodoItemsController < ApplicationController
+  before_action :find_todo_list
+
   def index
-    @todo_list = TodoList.find(params[:todo_list_id])
   end
   def new
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.new
   end
 
   def create
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.new(todo_item_params)
 
     if @todo_item.save
@@ -21,12 +20,10 @@ class TodoItemsController < ApplicationController
   end
 
   def edit
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.find(params[:id])
   end
 
   def update
-    @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.find(params[:id])
 
     if @todo_item.update_attributes(todo_item_params)
@@ -38,6 +35,16 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @todo_item = @todo_list.todo_item.find(params[:id])
+    if @todo_item.destroy
+      flash[:success] = "Todo list item was deleted."
+    else
+      flash[:error] = "Todo list item could not be deleted."
+    end
+    redirect_to todo_list_todo_items_path
+  end
+
   # to not write @todo_list in views to get todo_list.id
   # every time urls is generated this is called
   def url_options
@@ -45,6 +52,11 @@ class TodoItemsController < ApplicationController
   end
 
   private
+
+  def find_todo_list
+    @todo_list = TodoList.find(params[:todo_list_id])
+  end
+
   def todo_item_params
     params[:todo_item].permit(:content)
   end
