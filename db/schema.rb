@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322133143) do
+ActiveRecord::Schema.define(version: 20150412070442) do
 
   create_table "todo_items", force: true do |t|
     t.integer  "todo_list_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150322133143) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "password_difest"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,18 +3,19 @@ require 'spec_helper'
 RSpec.describe "users/show", type: :view do
   before(:each) do
     @user = assign(:user, User.create!(
-      :first_name => "First Name",
-      :last_name => "Last Name",
-      :email => "Email",
-      :password_difest => "Password Difest"
+      first_name: "Jason",
+      last_name: "Seifer",
+      email: "jason@teamtreehouse.com",
+      password: "treehouse1234",
+      password_confirmation: "treehouse1234"
     ))
   end
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/First Name/)
-    expect(rendered).to match(/Last Name/)
+    expect(rendered).to match(/First name/)
+    expect(rendered).to match(/Last name/)
     expect(rendered).to match(/Email/)
-    expect(rendered).to match(/Password Difest/)
+    expect(rendered).to match(/Password digest/)
   end
 end
