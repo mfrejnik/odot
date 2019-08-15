@@ -22,7 +22,7 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
-  gem 'rspec-activemodel-mocks', '~> 1.0.1'
+  gem 'rspec-activemodel-mocks', '~> 1.1.0'
 end
 
 group :test do
